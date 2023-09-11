@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,4 @@ Route::middleware([
     })->name('dashboard');
 });
 
-// User Route
-Route::prefix('user')->group(function(){
-    
-});
+Route::get('/user',[AuthController::class,'verify']);
