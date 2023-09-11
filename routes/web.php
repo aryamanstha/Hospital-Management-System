@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -27,4 +28,12 @@ Route::middleware([
     })->name('dashboard');
 });
 
+//User and Admin View Route
+Route::view('/patient','user.home');
+Route::get('/administrator',[AuthController::class,'admin']);
+
 Route::get('/user',[AuthController::class,'verify']);
+
+//Admin Routes
+Route::get('/view-doctor',[AdminController::class,'viewDoctor'])->name('admin.doctor.view');
+Route::post('/add-doctor',[AdminController::class,'addDoctor'])->name('doctor.add');
