@@ -30,10 +30,12 @@ Route::middleware([
 
 //User and Admin View Route
 Route::view('/patient','user.home');
-Route::get('/administrator',[AuthController::class,'admin']);
+Route::get('/admin-dashboard',[AdminController::class,'admin'])->name('admin.dashboard');
 
 Route::get('/user',[AuthController::class,'verify']);
 
 //Admin Routes
-Route::get('/view-doctor',[AdminController::class,'viewDoctor'])->name('admin.doctor.view');
-Route::post('/add-doctor',[AdminController::class,'addDoctor'])->name('doctor.add');
+Route::get('/doctors',[AdminController::class,'viewDoctor'])->name('admin.doctor.view');
+Route::post('/add-doctor',[AdminController::class,'addDoctor'])->name('admin.doctor.add');
+Route::post('/edit-doctor',[AdminController::class,'editDoctor'])->name('admin.doctor.edit');
+Route::get('/delete-doctor/{id}',[AdminController::class,'deleteDoctor'])->name(('admin.doctor.delete'));

@@ -16,7 +16,7 @@ class AuthController extends Controller
                 return view('user.home');
             }
             else{
-                return view('admin.home');
+                return redirect('/admin-dashboard');
             }
         }
         else
