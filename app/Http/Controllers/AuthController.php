@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +14,8 @@ class AuthController extends Controller
     {
         if(Auth::id()){
             if(Auth::user()->user_type=="0"){
-                return view('user.home');
+                $doctors=Doctor::all();
+                return view('user.home',compact('doctors'));
             }
             else{
                 return redirect('/admin-dashboard');

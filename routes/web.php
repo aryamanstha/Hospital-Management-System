@@ -34,8 +34,17 @@ Route::get('/admin-dashboard',[AdminController::class,'admin'])->name('admin.das
 
 Route::get('/user',[AuthController::class,'verify']);
 
-//Admin Routes
+//-------------------------------Admin Routes------------------------------------------
+
+//Doctor
 Route::get('/doctors',[AdminController::class,'viewDoctor'])->name('admin.doctor.view');
 Route::post('/add-doctor',[AdminController::class,'addDoctor'])->name('admin.doctor.add');
 Route::post('/edit-doctor',[AdminController::class,'editDoctor'])->name('admin.doctor.edit');
 Route::get('/delete-doctor/{id}',[AdminController::class,'deleteDoctor'])->name(('admin.doctor.delete'));
+
+//Appointment
+Route::get('/appointments',[AdminController::class,'viewAppointment'])->name('admin.appointment.view');
+//--------------------------------User Route-----------------------------------------------
+
+//------------------Appointment-----------------------
+Route::post('/appointment',[UserController::class,'appointment'])->name('appointment');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -69,5 +70,11 @@ class AdminController extends Controller
             $doctor->delete();
         }
         return redirect()->back()->with('message','Doctor Deleted Successfully');
+    }
+
+    //--------------------------Appointments-----------------------------------
+    public function viewAppointment(){
+        $appointments=Appointment::all();
+        return view('admin.appointment',compact('appointments'));
     }
 }

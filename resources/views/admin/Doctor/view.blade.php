@@ -10,6 +10,14 @@
 
     <main>
         <div class="content">
+            @if (Session::has('message'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ Session::get('message') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <div class="col-12">
                 <div class="title-box">
                     <h5>Doctors Information</h5>
@@ -17,8 +25,8 @@
                 <button type="button" data-toggle="modal" data-target="#addDoctorModal">Add Doctors</button> <br><br>
             </div>
             <!-- Modal -->
-            <div class="modal fade" id="addDoctorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="addDoctorModal" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -77,7 +85,8 @@
                                     <div class="buttons">
                                         <button data-toggle="modal"
                                             data-target="#editDoctorModal{{ $doctor->id }}">Edit</button>
-                                        <button data-toggle="modal" data-target="#deleteDoctorModal{{$doctor->id}}">Delete</button>
+                                        <button data-toggle="modal"
+                                            data-target="#deleteDoctorModal{{ $doctor->id }}">Delete</button>
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +106,8 @@
                                                 <form action="{{ route('admin.doctor.edit') }}" method="POST"
                                                     enctype="multipart/form-data">
                                                     @csrf
-                                                    <input type="hidden" name="id"  value="{{ $doctor->id }}">
+                                                    <input type="hidden" name="id"
+                                                        value="{{ $doctor->id }}">
                                                     <div class="form-group">
                                                         <label for="name">Name </label>
                                                         <input type="text" id="name" name="name"
@@ -137,19 +147,22 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Delete Doctor Information</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Delete Doctor Information
+                                            </h5>
                                             <button type="button" class="close" data-dismiss="modal"
                                                 aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                           Are you sure want to delete??
+                                            Are you sure want to delete??
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <a href="{{url('delete-doctor/'.$doctor->id)}}"><button type="button" class="btn btn-primary">Delete</button></a>
-                                          </div>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <a href="{{ url('delete-doctor/' . $doctor->id) }}"><button type="button"
+                                                    class="btn btn-primary">Delete</button></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
