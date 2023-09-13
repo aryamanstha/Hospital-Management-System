@@ -54,4 +54,10 @@ class UserController extends Controller
         $appointment->delete();
         return redirect()->back()->with('message','Appointment Deleted');
     }
+
+    // ------------------------Contact------------------------------------
+    public function contact()
+    {
+        return view('contact.contact');
+    }
 }

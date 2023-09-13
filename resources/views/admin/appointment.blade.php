@@ -53,7 +53,6 @@
                                   <a href="{{route('appointment.approve',$appointment->id)}}" class="btn btn-outline-success">Approve</a><br>
                                   <a href="{{route('appointment.reject',$appointment->id)}}" class="btn btn-outline-danger">Reject</a>
                                 </td>
-                               
                             </tr>
                         @endforeach
                     </tbody>
