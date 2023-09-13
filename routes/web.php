@@ -44,7 +44,11 @@ Route::get('/delete-doctor/{id}',[AdminController::class,'deleteDoctor'])->name(
 
 //Appointment
 Route::get('/appointments',[AdminController::class,'viewAppointment'])->name('admin.appointment.view');
+Route::get('/appointment/accept/{id}',[AdminController::class,'approveAppointment'])->name('appointment.approve');
+Route::get('/appointment/reject/{id}',[AdminController::class,'rejectAppointment'])->name('appointment.reject');
 //--------------------------------User Route-----------------------------------------------
 
 //------------------Appointment-----------------------
 Route::post('/appointment',[UserController::class,'appointment'])->name('appointment');
+Route::get('/appointment-view',[UserController::class,'viewAppointment'])->name('appointment.view');
+Route::get('/appointment-delete/{id}',[UserController::class,'deleteAppointment'])->name('appointment.delete');

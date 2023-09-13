@@ -31,13 +31,12 @@
                     <thead>
                         <tr>
                             <th scope="col">Full Name</th>
-                            <th class="th-sm">Email</th>
+                            <th >Email</th>
                             <th scope="col">Phone Number</th>
                             <th scope="col">Date Requested</th>
                             <th scope="col">Doctor</th>
                             <th scope="col">Message</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,9 +50,10 @@
                                 <td>{{ $appointment->message }}</td>
                                 <td>{{ $appointment->status }}</td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success">Accept</button>
-                                    <button type="button" class="btn btn-outline-danger">Reject</button>
+                                  <a href="{{route('appointment.approve',$appointment->id)}}" class="btn btn-outline-success">Approve</a><br>
+                                  <a href="{{route('appointment.reject',$appointment->id)}}" class="btn btn-outline-danger">Reject</a>
                                 </td>
+                               
                             </tr>
                         @endforeach
                     </tbody>
