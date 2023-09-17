@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,3 +56,12 @@ Route::get('/appointment-delete/{id}',[UserController::class,'deleteAppointment'
 
 //-----------------------Contact-------------------------
 Route::get('/contact',[UserController::class,'contact'])->name('contact');
+
+//-----------------------About----------------------------
+Route::get('/about',[UserController::class,'about'])->name('about');
+
+//-----------------------Doctor----------------------------
+Route::get('/doctors',[UserController::class,'doctors'])->name('doctors');
+
+//-----------------------News--------------------------------
+Route::get('/blogs',[UserController::class,'blogs'])->name('blogs');

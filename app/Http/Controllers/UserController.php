@@ -49,15 +49,34 @@ class UserController extends Controller
         }
         return redirect('/login');
     }
-    public function deleteAppointment($id){
+    public function deleteAppointment($id)
+    {
         $appointment = Appointment::find($id);
         $appointment->delete();
-        return redirect()->back()->with('message','Appointment Deleted');
+        return redirect()->back()->with('message', 'Appointment Deleted');
     }
 
     // ------------------------Contact------------------------------------
     public function contact()
     {
         return view('contact.contact');
+    }
+
+    //---------------------------About------------------------------------
+    public function about()
+    {
+        $doctors = Doctor::all();
+        return view('user.about', compact('doctors'));
+    }
+    //--------------------------Doctors-----------------------------------
+    public function doctors()
+    {
+        $doctors = Doctor::all();
+        return view('doctor.doctors', compact('doctors'));
+    }
+    //--------------------------Blogs-------------------------------------
+    public function blogs()
+    {
+        return view('news.blog');
     }
 }
